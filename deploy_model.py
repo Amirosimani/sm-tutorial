@@ -2,7 +2,6 @@ import time
 import boto3
 import argparse
 
-
 # Parse argument variables passed via the DeployModel processing step
 parser = argparse.ArgumentParser()
 parser.add_argument('--model-name', type=str)
@@ -15,8 +14,8 @@ region = args.region
 boto3.setup_default_session(region_name=region)
 sagemaker_boto_client = boto3.client('sagemaker')
 
-#name truncated per sagameker length requirememnts (63 char max)
-endpoint_config_name=f'{args.model_name[:56]}-config'
+# name truncated per sagameker length requirememnts (63 char max)
+endpoint_config_name = f'{args.model_name[:56]}-config'
 existing_configs = sagemaker_boto_client.list_endpoint_configs(NameContains=endpoint_config_name)['EndpointConfigs']
 
 if not existing_configs:
