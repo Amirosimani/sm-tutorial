@@ -2,3 +2,13 @@ __pycache__/
 .ipynb_checkpoints/
 data/
 config/
+.idea/
+.cache/
+.ipython/
+.jupyter/
+.local/
+.background_job_status.json
+.yarnrc
+lint.py
+
+
