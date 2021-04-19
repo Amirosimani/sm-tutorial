@@ -1,9 +1,17 @@
+import subprocess
+import sys
+
+subprocess.check_call([sys.executable, "-m", "pip", "install", 'imblearn'])
+    
+    
 import argparse
 import os
 import warnings
 
 import pandas as pd
 import numpy as np
+from imblearn.over_sampling import SMOTE
+
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.exceptions import DataConversionWarning
@@ -32,6 +40,10 @@ if __name__=='__main__':
     #  rename to `LABEL`
     df.rename(columns={"default payment next month": "LABEL"}, inplace=True)
     df['LABEL'] = df['LABEL'].astype('int')
+    
+    # upsampling minority class
+    sm = SMOTE(random_state=42)
+    df, _ = sm.fit_resample(df, df['SEX'])
     
     # split data to train and test    
     df_train = df.sample(frac=args.train_test_split_ratio, random_state=args.random_split)
