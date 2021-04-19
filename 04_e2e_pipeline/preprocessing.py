@@ -24,6 +24,16 @@ if __name__=='__main__':
     print('Reading input data from {}'.format(input_data_path))
     df = pd.read_csv(input_data_path)
     
+    # move the target column to the begining based on XGBoost
+    cols = list(df)
+    cols.insert(0, cols.pop(cols.index('default payment next month')))
+    df = df.loc[:, cols]
+
+    #  rename to `LABEL`
+    df.rename(columns={"default payment next month": "LABEL"}, inplace=True)
+    df['LABEL'] = df['LABEL'].astype('int')
+    
+    # split data to train and test    
     df_train = df.sample(frac=args.train_test_split_ratio, random_state=args.random_split)
     df_test = df.drop(df_train.index)
     

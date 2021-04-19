@@ -1,1 +1,1 @@
-{"classification_metrics": {"validation:f1": {"value": 0.6737499833106995}, "train:error": {"value": 0.16646000742912292}, "validation:error": {"value": 0.17833000421524048}, "train:f1": {"value": 0.7008200287818909}, "ObjectiveMetric": {"value": 0.6737499833106995}}}
+{"classification_metrics": {"validation:f1": {"value": 0.6751700043678284}, "train:error": {"value": 0.18291999399662018}, "validation:error": {"value": 0.17167000472545624}, "train:f1": {"value": 0.6611800193786621}, "ObjectiveMetric": {"value": 0.6751700043678284}}}
